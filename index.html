@@ -15,7 +15,11 @@
 
     <ul id="objectList"></ul>
 
-
+    <form id="myForm" method="POST">
+        <p>Please enter your username</p>
+        <input type="text" name="username" minlength="3" required>
+        <button type="button" onclick="submitForm()">Send!!</button>
+    </form>
 
     <script>
         steem();

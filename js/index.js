@@ -43,3 +43,39 @@ function displayObjectFields(data) {
 
 }
 
+function submitForm() {
+
+    // Get the form element
+
+    var form = document.getElementById("myForm");
+
+    // Submit the form
+    const postData = {
+        "art_work": { "title": form.username.value }
+    };
+
+
+    const url = 'http://127.0.0.1:3001/art_work';
+
+    // Make the POST request
+    fetch(url, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json' // Specify the content type as JSON
+        },
+        body: JSON.stringify(postData) // Convert the data to JSON format
+    })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json(); // Parse the JSON response
+        })
+        .then(data => {
+            console.log('Success:', data);
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+}
+
